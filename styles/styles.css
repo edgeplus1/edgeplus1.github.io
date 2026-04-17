@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f4f6;
+    color: #222;
+}
+
+/*
+    Некоторые стили сайта перенесены, в другой файл, если хотите посмотреть то, ищите в другом файле, было принято решение из-за сложности самой стилизации
+*/
+
+  .appstore-banner {
+    margin: auto;
+    position: relative;
+    width: 100%;
+    max-width: 90%;
+    height: 800px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Верхняя часть (70%) */
+  .banner-top {
+    flex: 6;
+    background: var(--bg-image) center/cover no-repeat;
+    position: relative;
+  }
+
+  .banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1));
+  }
+
+  .badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0,0,0,0.6);
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    z-index: 2;
+  }
+
+  /* Нижняя часть (30%) */
+  .banner-bottom {
+    flex: 2;
+    position: relative;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    z-index: 1;
+  }
+
+  /* Фон и размытие на всю ширину */
+  .banner-bottom::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(var(--bg-rgb), 0.9) 0%,
+      rgba(var(--bg-rgb), 0.7) 100%
+    );
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: -1;
+  }
+
+  .special-event {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  .title {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 8px 0;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    opacity: 0.85;
+    margin-bottom: 10px;
+  }
+
+  .app-info {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.15);
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  .app-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    margin-right: 10px;
+  }
+
+  .app-text {
+    flex: 1;
+  }
+
+  .app-name {
+    font-weight: bold;
+  }
+
+  .app-desc {
+    font-size: 13px;
+    opacity: 0.85;
+  }
+
+  .get-btn {
+    background: white;
+    color: black;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .get-btn:hover {
+    background: #eaeaea;
+  }
+
+
+.container {
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #e4e7ec;
+  border-radius: 20px;
+}
+
+.nocontainer {
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+main {
+  max-width: 96%;
+  margin: 0 auto;
+  margin-bottom: 150px;
+}
+
+.bottom-nav-wrapper {
+  display: none;
+}

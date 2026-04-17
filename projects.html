@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rivixal</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/mattle_styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="styles/fonts.css">
+</head>
+<body>
+<header>
+  <div class="header-container">
+    <div class="logo">
+      <img src="system/images/logo.svg" alt="Rivixal">
+    </div>
+  <nav>
+    <ul>
+      <li><a href="index.html" class="active"><i class='bx bxs-home'></i> Главная</a></li>
+      <li><a href="projects.html"><i class='bx bxs-category-alt'></i> Проекты</a></li>
+      <li><a href="#"><i class='bx bxs-up-arrow-square'></i> Обновление</a></li>
+      <li><a href="#"><i class='bx bxs-user'></i> О сайте</a></li>
+    </ul>
+  </nav>
+    </div>
+</header>
+
+  <div class="appstore-banner" style="--bg-image: url('https://cdn1.ozone.ru/s3/multimedia-t/6465976829.jpg');" data-nav-theme="dark">
+  <div class="banner-top">
+    <div class="banner-overlay"></div>
+    <div class="badge">Сегодня: <span id="date"></span></div>
+  </div>
+
+  <div class="banner-bottom">
+    <div>
+    <div class="special-event">
+        <strong>Случайный факт:</strong>
+        <div class="fact-text" id="random-fact">Загрузка факта...</div>
+    </div>
+      <h1 class="title">Добро пожаловать на сайт Edge+</h1>
+      <p class="subtitle">Здесь вы найдете все, что вам нужно, и то что вам не нужно тоже!</p>
+    </div>
+
+    <div class="app-info">
+    <!--<img src="https://i.imgur.com/SOfLe1M.png" alt="App Icon" class="app-icon">-->
+      <div class="app-text">
+        <div class="app-name">Rivixal Clock 2.1</div>
+        <div class="app-desc">Часы на вашем компьютере</div>
+      </div>
+      <button class="get-btn">Перейти</button>
+    </div>
+  </div>
+</div>
+
+    <div class="projects-container" data-nav-theme="light">
+        <div class="project-card web-projects">
+            <div class="project-icon">
+                <i class='bx bx-globe'></i>
+            </div>
+            <h3>Веб-проекты</h3>
+            <p>Посмотрите мои работы в веб-разработке - современные и адаптивные сайты, созданные с использованием передовых технологий</p>
+            <button class="project-btn">Смотреть проекты</button>
+        </div>
+        
+        <div class="project-card desktop-projects">
+            <div class="project-icon">
+                <i class='bx bx-desktop'></i>
+            </div>
+            <h3>Десктоп проекты</h3>
+            <p>Ознакомьтесь с приложениями для настольных компьютеров, которые я разрабатывал</p>
+            <button class="project-btn">Смотреть проекты</button>
+        </div>
+    </div>
+
+  <main>
+    <div class="nocontainer" data-nav-theme="light">
+      <h1>Блок изменится скоро</h1>
+    </div>
+    <br>
+    <div class="container" onclick="document.location='#'">
+      <h1>Семерку не бросаем!</h1>
+      <p>Не смотря на то, что поддержка давным давном прекращена, но мы никогда её не оставим без софта!</p>
+    </div>
+    <br>
+    <div class="container" onclick="document.location='#'">
+      <h1>Rivixal Закрывается</h1>
+      <p>Долгое время думал, что будет лучше, но решил закрыть сайт и перезапустить его в другом виде. А также возможны ребрединг проектов и кодовых имен проекта, с полной переработкой</p>
+    </div>
+    <br>
+    <div class="container" onclick="document.location='#'">
+      <h1>Новые проекты</h1>
+      <p>Мы публикуем проекты с открытым исходным кодом...</p>
+    </div>
+  </main>
+<div class="bottom-nav-wrapper">
+  <div class="bottom-nav">
+    <ul class="mobile-nav">
+      <li><a href="index.html" class="active"><i class='bx bxs-home'></i><span>Главная</span></a></li>
+      <li><a href="projects.html"><i class='bx bxs-category-alt'></i><span>Проекты</span></a></li>
+      <li><a href="#"><i class='bx bxs-up-arrow-square'></i><span>Обновление</span></a></li>
+      <li><a href="#"><i class='bx bxs-user'></i><span>О сайте</span></a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+ <script src="system/scripts/sunlight.js"></script>
+ <script src="system/scripts/flashing.js"></script>
+ <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+ <script src="system/scripts/mainbagde.js"></script>
+ <script src="system/scripts/getDateforBadge.js"></script>
+ <script src="system/scripts/getFactsforSpecialEvent.js"></script>
+</body>
+</html>

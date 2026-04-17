@@ -1,0 +1,32 @@
+@font-face {
+    font-family: wix-madefordisplay-bold;
+    src: url(../system/fonts/wix-mafedor-display/WixMadeforDisplay-Bold.ttf);
+}
+
+@font-face {
+    font-family: wix-madefordisplay-extrabold;
+    src: url(../system/fonts/wix-mafedor-display/WixMadeforDisplay-ExtraBold.ttf);
+}
+
+@font-face {
+    font-family: wix-madefordisplay-Medium;
+    src: url(../system/fonts/wix-mafedor-display/WixMadeforDisplay-Medium.ttf);
+}
+
+@font-face {
+    font-family: wix-madefordisplay-Regular;
+    src: url(../system/fonts/wix-mafedor-display/WixMadeforDisplay-Regular.ttf);
+}
+
+@font-face {
+    font-family: wix-madefordisplay-SemiBold;
+    src: url(../system/fonts/wix-mafedor-display/WixMadeforDisplay-SemiBold.ttf);
+}
+
+body {
+    font-family: wix-madefordisplay-Regular, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: wix-madefordisplay-Bold, Arial, sans-serif;
+}

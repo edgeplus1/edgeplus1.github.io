@@ -1,0 +1,1366 @@
+:root {
+  --primary-blue: #1d4ed8;
+  --secondary-blue: #3b82f6;
+  --light-blue: #dbeafe;
+  --accent-blue: #60a5fa;
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(219, 234, 254, 0.6);
+  --glass-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+  --glass-blur: blur(20px);
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-card: #ffffff;
+  --gradient-primary: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+  --gradient-glass: linear-gradient(135deg, 
+    rgba(219, 234, 254, 0.6) 0%, 
+    rgba(191, 219, 254, 0.4) 100%);
+  --gradient-card: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.9) 0%, 
+    rgba(248, 250, 252, 0.9) 100%);
+}
+
+header {
+  background: #ffffff00;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.header-container {
+  max-width: 98%;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /*background-color: #ffffffb0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);*/
+  border-radius: 20px;
+  /*backdrop-filter: blur(18px);*/
+}
+
+/* Логотип + текст с эффектом стекла */
+.logo {
+  padding: 10px 10px 10px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+/* Эффект стеклянного фона */
+.logo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-backdrop-filter: blur(25px) saturate(200%);
+  backdrop-filter: blur(25px) saturate(200%);
+  background: 
+    radial-gradient(
+      circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(255, 255, 255, 0.1) 30%,
+      rgba(255, 255, 255, 0.05) 70%,
+      transparent 100%
+    ),
+    linear-gradient(
+      135deg, 
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(255, 255, 255, 0.12) 100%
+    );
+  border-radius: 20px;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+/* Эффект преломления света */
+.logo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle 60px at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.15) 30%,
+    transparent 70%
+  );
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Ховер эффекты */
+.logo:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.logo:hover::before {
+  -webkit-backdrop-filter: blur(30px) saturate(220%);
+  backdrop-filter: blur(30px) saturate(220%);
+  background: 
+    radial-gradient(
+      circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.35) 0%,
+      rgba(255, 255, 255, 0.2) 30%,
+      rgba(255, 255, 255, 0.1) 70%,
+      transparent 100%
+    );
+}
+
+.logo:hover::after {
+  opacity: 1;
+}
+
+/* Изображение логотипа */
+.logo img {
+  height: 30px;
+  transition: all 0.3s ease;
+  filter: brightness(0.9);
+}
+
+.logo:hover img {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+/* Текст логотипа */
+.logo span {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: #111;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.logo:hover span {
+  color: #000;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================== */
+/*       DARK MODE LOGO       */
+/* ========================== */
+
+.logo.dark-mode {
+  background: hsla(0, 0%, 6%, 0.301);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 20px;
+  box-shadow:
+    0 14px 42px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.55);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Внутренний стеклянный слой */
+.logo.dark-mode::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -1;
+
+  background:
+    radial-gradient(
+      circle at var(--mouse-x) var(--mouse-y),
+      rgba(120, 180, 255, 0.30) 0%,
+      rgba(255, 255, 255, 0.06) 30%,
+      rgba(255, 255, 255, 0.02) 60%,
+      transparent 100%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.10) 0%,
+      rgba(255, 255, 255, 0.04) 50%,
+      rgba(255, 255, 255, 0.08) 100%
+    );
+
+  -webkit-backdrop-filter: blur(25px) saturate(200%);
+  backdrop-filter: blur(25px) saturate(200%);
+  transition: all 0.35s ease;
+}
+
+/* Блик — выключен по умолчанию */
+.logo.dark-mode::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+
+  background: radial-gradient(
+    circle 190px at var(--mouse-x) var(--mouse-y),
+    rgba(0, 255, 255, 0.55) 0%,
+    rgba(81, 122, 255, 0.18) 30%,
+    transparent 50%
+  );
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Блик при наведении */
+.logo.dark-mode:hover::after {
+  opacity: 0.9;
+}
+
+/* Текст Edge+ */
+.logo.dark-mode span {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.logo.dark-mode:hover span {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 1);
+}
+
+/* ========================== */
+/*       SVG инверсия         */
+/* ========================== */
+
+/* Для img внутри логотипа */
+.logo.dark-mode img {
+  filter: brightness(0) invert(1);  /* ← делает SVG белым */
+  transition: filter 0.25s ease;
+}
+
+.logo.dark-mode:hover img {
+  filter: brightness(0.1) invert(1);
+}
+
+/* Для inline SVG (если будет) */
+.logo.dark-mode svg {
+  filter: brightness(0) invert(1);
+  transition: filter 0.25s ease;
+}
+
+/* Цветные SVG (fill="currentColor") */
+.logo.dark-mode svg * {
+  fill: #fff !important;
+  stroke: #fff !important;
+}
+
+
+
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .logo {
+    padding: 10px 16px;
+    gap: 10px;
+  }
+  
+  .logo img {
+    height: 32px;
+  }
+  
+  .logo span {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  
+  .logo img {
+    height: 28px;
+  }
+  
+  .logo span {
+    font-size: 1.1em;
+  }
+}
+
+/* Меню */
+
+nav ul {
+    padding: 5px 5px 5px 5px;
+    display: flex;
+    gap: 4px;
+    border-radius: 20px;
+    list-style: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+}
+
+/* Основной слой стекла - более глянцевый */
+nav ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-backdrop-filter: blur(25px) saturate(200%) brightness(110%);
+    backdrop-filter: blur(25px) saturate(200%) brightness(110%);
+    background: 
+        radial-gradient(
+            circle at var(--mouse-x) var(--mouse-y),
+            rgba(206, 206, 206, 0.3) 0%,
+            rgba(255, 255, 255, 0.1) 30%,
+            rgba(255, 255, 255, 0.05) 70%,
+            transparent 100%
+        ),
+        linear-gradient(
+            135deg, 
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(255, 255, 255, 0.08) 30%,
+            rgba(255, 255, 255, 0.12) 70%,
+            rgba(255, 255, 255, 0.1) 100%
+        );
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+/* Эффект преломления света для светлого режима - темный */
+nav ul::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle 80px at var(--mouse-x) var(--mouse-y),
+        rgba(68, 68, 68, 0.15) 0%,
+        rgba(0, 0, 0, 0.08) 30%,
+        transparent 70%
+    );
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+/* Показываем эффект только при наведении на nav ul */
+nav ul:hover::after {
+    opacity: 1;
+}
+
+/* Внутренние блики для глянца */
+.glass-shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 255, 255, 0.25) 0%,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(255, 255, 255, 0.15) 0%,
+            transparent 40%
+        );
+    border-radius: 20px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Усиленные тени для объема */
+nav ul {
+    background: transparent;
+}
+
+/* Эффекты при наведении */
+nav ul:hover {
+    transform: translateY(-2px);
+}
+
+nav ul:hover::before {
+  -webkit-backdrop-filter: blur(30px) saturate(220%) brightness(115%);
+    backdrop-filter: blur(30px) saturate(220%) brightness(115%);
+    background: 
+        radial-gradient(
+            circle at var(--mouse-x) var(--mouse-y),
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(255, 255, 255, 0.2) 30%,
+            rgba(255, 255, 255, 0.1) 70%,
+            transparent 100%
+        ),
+        linear-gradient(
+            135deg, 
+            rgba(255, 255, 255, 0.2) 0%,
+            rgba(255, 255, 255, 0.12) 30%,
+            rgba(255, 255, 255, 0.15) 70%,
+            rgba(255, 255, 255, 0.12) 100%
+        );
+}
+
+/* СТИЛИ ССЫЛОК - ИСПРАВЛЕНО: фон только при наведении */
+nav ul li a {
+    text-decoration: none;
+    font-size: 15px;
+    padding: 12px 20px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #747474;
+    background: transparent;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid transparent;
+}
+
+/* Фон появляется ТОЛЬКО при наведении */
+nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #000;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+nav ul li a.active {
+    background: rgba(219, 214, 214, 0.705);
+    color: rgb(47, 139, 214);
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Стили для иконок */
+nav ul li a i {
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+/* ТЕМНЫЙ РЕЖИМ - ГЛЯНЦЕВОЕ СТЕКЛО */
+nav.dark-mode::before {
+  background: #000;
+}
+
+/* === ТЁМНЫЙ РЕЖИМ === */
+
+nav.dark-mode ul::before {
+  -webkit-backdrop-filter: blur(25px) saturate(180%) brightness(88%);
+  backdrop-filter: blur(25px) saturate(180%) brightness(88%);
+  background:
+    radial-gradient(
+      circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.06) 25%,
+      rgba(255, 255, 255, 0.03) 45%,
+      transparent 70%
+    ),
+    hsla(0, 0%, 6%, 0.301); /* тёмная подложка как у нижней панели */
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+nav.dark-mode ul:hover::before {
+  -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(85%);
+  backdrop-filter: blur(30px) saturate(200%) brightness(85%);
+  background:
+    radial-gradient(
+      circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.20) 0%,
+      rgba(255, 255, 255, 0.10) 30%,
+      rgba(255, 255, 255, 0.05) 60%,
+      transparent 80%
+    ),
+    hsla(0, 0%, 6%, 0.301);
+}
+
+/* Эффект преломления для темного режима - БЕЛЫЙ */
+nav.dark-mode ul::after {
+    background: radial-gradient(
+        circle 80px at var(--mouse-x) var(--mouse-y),
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0.12) 30%,
+        transparent 70%
+    );
+}
+
+/* Ссылки в темном режиме */
+nav.dark-mode ul li a {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+    border-color: transparent;
+    background: transparent;
+}
+
+nav.dark-mode ul li a:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+nav.dark-mode ul li a.active {
+    background: rgba(60, 65, 61, 0.603);
+    color: rgb(112 193 245);
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+@media screen and (max-width: 799px) {
+
+  /* === ФИКСИРОВАННАЯ ПАНЕЛЬ === */
+  .bottom-nav-wrapper {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 12px max(14px, env(safe-area-inset-bottom));
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  .bottom-nav {
+    pointer-events: auto;
+  }
+
+  /* === ОСНОВНАЯ ПАНЕЛЬ (не растягивается) === */
+  .bottom-nav .mobile-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 8px 8px 8px 8px;
+    width: max-content;
+    max-width: calc(100vw - 24px);
+    border-radius: 25px;
+    list-style: none;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    box-shadow:
+      0 15px 35px rgba(0,0,0,.10),
+      inset 0 2px 0 rgba(255,255,255,.25),
+      inset 0 -2px 0 rgba(0,0,0,.10);
+  }
+
+  /* === СЛОИ ГЛЯНЦЕВОГО СТЕКЛА === */
+  .bottom-nav .mobile-nav::before {
+    content: '';
+    position: absolute; inset: 0;
+    -webkit-backdrop-filter: blur(25px) saturate(200%) brightness(110%);
+            backdrop-filter: blur(25px) saturate(200%) brightness(110%);
+    background:
+      radial-gradient(
+        circle at var(--mouse-x) var(--mouse-y),
+        rgba(206,206,206,0.3) 0%,
+        rgba(255,255,255,0.1) 30%,
+        rgba(255,255,255,0.05) 70%,
+        transparent 100%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,0.15) 0%,
+        rgba(255,255,255,0.08) 30%,
+        rgba(255,255,255,0.12) 70%,
+        rgba(255,255,255,0.1) 100%
+      );
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    z-index: -1;
+    transition: all .3s ease;
+  }
+
+  .bottom-nav .mobile-nav::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(
+      circle 80px at var(--mouse-x) var(--mouse-y),
+      rgba(68,68,68,0.15) 0%,
+      rgba(0,0,0,0.08) 30%,
+      transparent 70%
+    );
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+  }
+
+  .bottom-nav .mobile-nav:hover::after,
+  .bottom-nav .mobile-nav:focus-within::after,
+  .bottom-nav .mobile-nav.touched::after {
+    opacity: 1;
+  }
+
+  /* === ЭЛЕМЕНТЫ МЕНЮ === */
+  .bottom-nav .mobile-nav li {
+    list-style: none;
+    flex: 0 0 auto;
+  }
+
+  .bottom-nav .mobile-nav li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 4px;
+    padding: 8px 12px;
+    min-height: 54px;
+    border-radius: 25px;
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 12px;
+    color: #444; /* светлый по умолчанию */
+    background: transparent;
+    border: 1px solid transparent;
+    transition: all .25s ease;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+
+  .bottom-nav .mobile-nav li a i {
+    display: block;
+    font-size: 20px;
+    line-height: 1;
+    transition: transform .25s ease;
+  }
+
+  .bottom-nav .mobile-nav li a span {
+    display: block;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.1;
+    margin-top: 2px;
+    transition: all .25s ease;
+  }
+
+  /* === ХОВЕР / АКТИВ === */
+  .bottom-nav .mobile-nav li a:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.2);
+    color: #000;
+    transform: translateY(-1px);
+  }
+
+  .bottom-nav .mobile-nav li a:hover i {
+    transform: scale(1.06);
+  }
+
+  .bottom-nav .mobile-nav li a.active {
+    background: rgba(255, 255, 255, 0.925);
+    color: rgb(87, 180, 255);
+    border-color: rgba(255, 255, 255, 0.3);
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.3);
+  }
+
+  /* === ТЕМНЫЙ РЕЖИМ: читаемость как у nav ul.dark-mode === */
+  .dark-mode .bottom-nav .mobile-nav::before {
+    -webkit-backdrop-filter: blur(25px) saturate(180%) brightness(90%);
+            backdrop-filter: blur(25px) saturate(180%) brightness(90%);
+    background:
+      radial-gradient(
+        circle at var(--mouse-x) var(--mouse-y),
+        rgba(255,255,255,0.15) 0%,
+        rgba(255,255,255,0.08) 20%,
+        rgba(255,255,255,0.05) 40%,
+        transparent 100%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,0.1) 0%,
+        rgba(255,255,255,0.05) 30%,
+        rgba(255,255,255,0.08) 70%,
+        rgba(255,255,255,0.06) 100%
+      );
+      background: hsla(0, 0%, 8%, 0.411);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .dark-mode .bottom-nav .mobile-nav::after {
+    background: radial-gradient(
+      circle 80px at var(--mouse-x) var(--mouse-y),
+      rgba(255,255,255,0.25) 0%,
+      rgba(255,255,255,0.12) 30%,
+      transparent 70%
+    );
+  }
+
+  /* — текст и иконки становятся светлыми */
+  .dark-mode .bottom-nav .mobile-nav li a {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  }
+
+  .dark-mode .bottom-nav .mobile-nav li a:hover {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.9);
+    border-color: rgba(255,255,255,0.1);
+  }
+
+  .dark-mode .bottom-nav .mobile-nav li a.active {
+    background: rgba(60, 65, 61, 0.603);
+    color: rgb(112 193 245);
+    text-shadow: 0 1px 4px rgba(194, 194, 194, 0.8);
+    border-color: rgb(131 131 131 / 20%);
+  }
+
+  /* === отступ под контент === */
+  .content {
+    padding-bottom: calc(90px + env(safe-area-inset-bottom));
+  }
+}
+
+/* ===== Карточки проектов с эффектом преломления света (версия с чётким кругом) ===== */
+
+/* Контейнер */
+.projects-container {
+  display: flex;
+  width: 90%;
+  margin: 40px auto;
+  gap: 20px;
+  padding: 0;
+}
+
+/* Основная карточка */
+.project-card {
+  flex: 1;
+  padding: 35px 30px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  min-height: 320px;
+  cursor: pointer;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* для преломления света */
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+/* Цветовые схемы карточек */
+.web-projects {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.desktop-projects {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+/* --- Псевдослои --- */
+.project-card::before,
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Мягкий глянец поверх */
+.project-card::before {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.06) 50%,
+      rgba(255, 255, 255, 0.10) 100%
+    );
+  mix-blend-mode: screen;
+  opacity: 0.9;
+  transition: opacity .25s ease, filter .25s ease;
+}
+
+/* Световое преломление — один крупный чёткий круг */
+.project-card::after {
+  background:
+    radial-gradient(
+      circle 90% at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.65) 0%,
+      rgba(255, 255, 255, 0.25) 30%,
+      rgba(255, 255, 255, 0.08) 50%,
+      transparent 70%
+    );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Блик-полоска (добавляется JS-скриптом) */
+.project-card .glass-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.00) 0%,
+      rgba(255, 255, 255, 0.10) 30%,
+      rgba(255, 255, 255, 0.00) 60%
+    );
+  mix-blend-mode: screen;
+  transform: translateX(calc(var(--mouse-x) - 50%)) translateY(calc(var(--mouse-y) - 50%));
+  transition: opacity .25s ease, transform .1s linear;
+  opacity: .35;
+}
+
+/* Контент всегда поверх бликов */
+.project-card > *:not(.glass-shine) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Ховер эффекты ===== */
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.project-card:hover .project-icon {
+  transform: scale(1.15);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.project-card:hover::after {
+  opacity: 1;
+}
+
+.project-card:hover .glass-shine {
+  opacity: .5;
+}
+
+/* Иконка проекта */
+.project-icon {
+  font-size: 52px;
+  margin-bottom: 25px;
+  background: rgba(255, 255, 255, 0.2);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Заголовок */
+.project-card h3 {
+  font-size: 24px;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+/* Текст */
+.project-card p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  opacity: 0.95;
+  padding: 0 10px;
+}
+
+/* Кнопка */
+.project-btn {
+  padding: 12px 30px;
+  background: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .12);
+}
+
+.web-projects .project-btn { color: #27ae60; }
+.desktop-projects .project-btn { color: #2980b9; }
+
+.project-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Тёмный режим ===== */
+.dark-mode .project-card::before {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.04) 50%,
+      rgba(255, 255, 255, 0.07) 100%
+    );
+  mix-blend-mode: screen;
+}
+
+.dark-mode .project-card::after {
+  background:
+    radial-gradient(
+      circle 260px at var(--mouse-x) var(--mouse-y),
+      rgba(180, 220, 255, 0.55) 0%,
+      rgba(140, 200, 255, 0.25) 30%,
+      rgba(120, 180, 255, 0.08) 55%,
+      transparent 75%
+    );
+}
+
+/* ===== Адаптивность ===== */
+@media (max-width: 799px) {
+  .projects-container {
+    flex-direction: column;
+    gap: 25px;
+    width: 95%;
+  }
+
+  .project-card {
+    min-height: 280px;
+    border-radius: 14px;
+    padding: 30px 25px;
+  }
+
+  .project-icon {
+    width: 80px;
+    height: 80px;
+    font-size: 46px;
+  }
+
+  /* скрываем навигацию, как у тебя было */
+  nav ul { display: none !important; }
+
+  /* при касании на мобильных включаем преломление */
+  .project-card.touched::after { opacity: 1; }
+}
+
+/* ===== Уважение к prefers-reduced-motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card::before,
+  .project-card::after,
+  .project-card .glass-shine,
+  .project-btn,
+  .project-icon {
+    transition: none !important;
+  }
+}
+
+.test-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.test-open-btn {
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: none;
+  background: #007aff;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* ============================= */
+/*       БАЗА ДЛЯ ДИАЛОГОВ       */
+/* ============================= */
+
+.dialog {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow: auto;
+
+  /* затемнённый фон + blur, как у системных оверлеев */
+  background: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  opacity: 1;
+  transition: opacity .28s ease;
+}
+
+/* плавность фона при закрытии (твоя fade-out логика) */
+.dialog.fade-out {
+  opacity: 0;
+}
+
+/* ============================= */
+/*         ОКНО ДИАЛОГА          */
+/* ============================= */
+
+.dialog-content {
+  position: relative;
+  margin: 6% auto;
+  max-width: 520px;
+  border-radius: 22px;
+  padding: 20px 22px 16px;
+
+  /* стекло по мотивам nav / bottom-nav */
+  background: hsla(0, 0%, 100%, 0.82);
+  -webkit-backdrop-filter: blur(25px) saturate(190%) brightness(107%);
+  backdrop-filter: blur(25px) saturate(190%) brightness(107%);
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.75);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  /* анимация появления */
+  transform: translateY(18px);
+  opacity: 0;
+  transition:
+    opacity .28s ease,
+    transform .28s ease;
+
+  /* координаты для преломления света */
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+/* когда показан (display: block) — плавное появление */
+.dialog[style*="block"] .dialog-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* при fade-out — мягко опускаем и гасим */
+.dialog.fade-out .dialog-content {
+  transform: translateY(14px);
+  opacity: 0;
+}
+
+/* преломление света внутри окна — основа из nav ul::before */
+.dialog-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: -1;
+
+  -webkit-backdrop-filter: blur(25px) saturate(200%) brightness(110%);
+  backdrop-filter: blur(25px) saturate(200%) brightness(110%);
+
+  background:
+    radial-gradient(
+      circle at var(--mouse-x) var(--mouse-y),
+      rgba(206, 206, 206, 0.30) 0%,
+      rgba(255, 255, 255, 0.12) 30%,
+      rgba(255, 255, 255, 0.06) 70%,
+      transparent 100%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0.08) 40%,
+      rgba(255, 255, 255, 0.14) 90%
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.20);
+}
+
+/* лёгкий тёмный блик как у nav ul::after, но мягче */
+.dialog-content::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+
+  background: radial-gradient(
+    circle 95px at var(--mouse-x) var(--mouse-y),
+    rgba(68, 68, 68, 0.16) 0%,
+    rgba(0, 0, 0, 0.08) 30%,
+    transparent 70%
+  );
+  opacity: .45;
+}
+
+/* ============================= */
+/*       ТЕКСТ В ДИАЛОГЕ         */
+/* ============================= */
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+}
+
+.dialog-title {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.dialog-text {
+  font-size: 14px;
+  color: #6b6b6f;
+  margin-top: 4px;
+}
+
+.dialog-body {
+  position: relative;
+  z-index: 1;
+  text-align: left;
+  font-size: 14px;
+  color: #6b6b6f;
+}
+
+/* ============================= */
+/*       ВАРИАНТЫ ОКОН          */
+/* ============================= */
+
+/* 1. Bottom sheet */
+.dialog--sheet .dialog-content {
+  margin-top: auto;
+  margin-bottom: 18px;
+  border-radius: 22px 22px 28px 28px;
+  max-width: 520px;
+}
+
+/* 2. Alert */
+.dialog--alert .dialog-content {
+  margin: 10% auto;
+  max-width: 420px;
+}
+
+/* 3. Passcode */
+.dialog--passcode .dialog-content {
+  margin: 9% auto;
+  max-width: 460px;
+}
+
+/* 4. Actions list */
+.dialog--actions .dialog-content {
+  margin: 8% auto;
+  max-width: 520px;
+  padding: 16px 14px 14px;
+}
+
+/* 5. Compact info */
+.dialog--compact .dialog-content {
+  margin: 16% auto;
+  max-width: 360px;
+  padding: 16px 18px 14px;
+}
+
+.dialog-actions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dialog-actions-item {
+  border-radius: 14px;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 500;
+  background: rgba(245, 245, 248, 0.98);
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(0, 0, 0, 0.02);
+  border: none;
+  cursor: pointer;
+}
+
+/* ============================= */
+/*            КНОПКИ             */
+/* ============================= */
+
+.dialog-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 6px;
+}
+
+.dialog-btn {
+  position: relative;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+
+  background: #e1e1e6;     /* серая iOS-кнопка */
+  color: #111;
+
+  box-shadow:
+    0 6px 14px rgba(0,0,0,.14),
+    0 0 0 1px rgba(255,255,255,0); /* без видимого бордера */
+
+  transition:
+    transform .16s ease,
+    box-shadow .16s ease,
+    background .16s ease,
+    color .16s ease;
+
+  overflow: hidden;        /* обрезаем блики по форме капсулы */
+}
+
+/* Основная синяя кнопка */
+.dialog-btn-primary {
+  background: #007aff;
+  color: #fff;
+}
+
+/* Мягкий статичный глянец поверх кнопки */
+.dialog-btn::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  border-radius: inherit;
+
+  background:
+    radial-gradient(circle at 20% 10%,
+      rgba(255,255,255,.35) 0%,
+      rgba(255,255,255,.18) 30%,
+      transparent 70%);
+
+  opacity: .7;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.dialog-btn::after {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+
+  left: var(--mx, 50%);
+  top:  var(--my, 50%);
+  transform: translate(-50%, -50%);
+
+  background: radial-gradient(circle,
+    rgba(255,255,255,0.85) 0%,
+    rgba(255,255,255,0.45) 30%,
+    rgba(255,255,255,0.0) 70%
+  );
+
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+
+  /* ТОЛЬКО прозрачность, БЕЗ анимации позиции */
+  transition: opacity .22s ease;
+}
+
+/* Ховер: лёгкий подъём + включаем шарик */
+.dialog-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.22);
+}
+
+.dialog-btn:hover::after {
+  opacity: 1;
+}
+
+
+
+/* ============================= */
+/*            CLOSE              */
+/* ============================= */
+
+.close {
+  font-size: 24px;
+  cursor: pointer;
+  color: #777;
+  transition: .2s;
+  line-height: 1;
+}
+
+.close:hover {
+  color: #000;
+}
+
+html.dialog-open,
+body.dialog-open {
+  overflow: hidden;
+}
+
+/* Кастомный скроллбар */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+}

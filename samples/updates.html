@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Edge+ Обновление UEFI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: white;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      cursor: none;
+      font-family: 'Wix Madefor Display', sans-serif;
+      overflow: hidden;
+    }
+
+    .logo {
+      height: 30vh;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .center-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .loading-wheel {
+      width: 80px;
+      height: 80px;
+      border: 8px solid rgba(255, 255, 255, 0.1);
+      border-top: 8px solid white;
+      border-radius: 50%;
+      animation: spin 1.5s linear infinite;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes spin {
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .bottom-section {
+      height: 40vh;
+      padding: 40px 60px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .stage-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .stage-name {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .stage-percent {
+      font-weight: 600;
+      font-size: 18px;
+      color: white;
+    }
+
+    .progress-container {
+      background: #222;
+      height: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .progress-bar {
+      background: white;
+      height: 100%;
+      width: 0%;
+      transition: width 0.5s ease;
+      border-radius: 10px;
+    }
+
+    .stage-markers {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    .marker {
+      width: 2px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      position: relative;
+    }
+
+    .marker-label {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: #aaa;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    .global-info {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid #333;
+    }
+
+    .eta {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .global-percent {
+      font-weight: 700;
+      font-size: 32px;
+      color: white;
+    }
+
+    .warning {
+      color: #ffcc00;
+      font-weight: 600;
+      margin-top: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 16px;
+      text-align: center;
+      padding: 10px;
+      border: 1px solid #ffcc00;
+      border-radius: 5px;
+      background: rgba(255, 204, 0, 0.1);
+    }
+
+    .warning span {
+      font-size: 24px;
+    }
+
+    .dialog {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #111;
+      border: 1px solid #444;
+      padding: 30px 40px;
+      border-radius: 8px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 100;
+      width: 450px;
+    }
+
+    .dialog h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 26px;
+      color: white;
+      font-weight: 700;
+    }
+
+    .dialog p {
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .dialog button {
+      background: #333;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      margin: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      border-radius: 4px;
+      width: 100%;
+      text-align: center;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: 'Wix Madefor Display', sans-serif;
+    }
+
+    .dialog button:hover, .dialog button.selected {
+      background: #444;
+      transform: scale(1.03);
+    }
+
+    .dialog button.selected {
+      box-shadow: 0 0 0 2px #ffcc00;
+    }
+
+    .action-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0a0a0a;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 36px;
+      display: none;
+      z-index: 200;
+      text-align: center;
+      font-family: 'Wix Madefor Display', sans-serif;
+    }
+
+    .action-content {
+      max-width: 600px;
+      padding: 20px;
+      font-weight: 600;
+    }
+
+    .loader-large {
+      width: 60px;
+      height: 60px;
+      border: 6px solid rgba(255, 255, 255, 0.3);
+      border-top: 6px solid white;
+      border-radius: 50%;
+      animation: spin 1.5s linear infinite;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo">Edge+</div>
+  
+  <div class="center-section">
+    <div class="loading-wheel" id="loadingWheel"></div>
+  </div>
+
+  <div class="bottom-section">
+    <div class="stage-info">
+      <div class="stage-name" id="stageName">Этап 1: Подготовка системы</div>
+      <div class="stage-percent" id="stagePercent">0%</div>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+      
+      <!-- Маркеры этапов -->
+      <div class="stage-markers">
+        <div class="marker" style="left: 20%"><div class="marker-label">Этап 2</div></div>
+        <div class="marker" style="left: 40%"><div class="marker-label">Этап 3</div></div>
+        <div class="marker" style="left: 60%"><div class="marker-label">Этап 4</div></div>
+        <div class="marker" style="left: 80%"><div class="marker-label">Этап 5</div></div>
+      </div>
+    </div>
+
+    <div class="global-info">
+      <div class="eta">ETA: <span id="etaTime">00:01:40</span></div>
+      <div class="global-percent"><span id="globalPercent">0</span>%</div>
+    </div>
+
+    <div class="warning">
+      <span>⚠️</span> ПРЕДУПРЕЖДЕНИЕ: Во время обновления устройства не отключайте его от сети!!
+    </div>
+
+    <div class="dialog" id="actionDialog">
+      <h2>Обновление завершено</h2>
+      <p>Выберите дальнейшее действие:</p>
+      <button id="rebootBtn">
+        🔁 Перезагрузиться сейчас
+      </button>
+      <button id="uefiBtn">
+        🛠 Войти в UEFI
+      </button>
+    </div>
+  </div>
+
+  <!-- Экран перезагрузки -->
+  <div class="action-screen" id="rebootScreen">
+    <div class="loader-large"></div>
+    <div class="action-content">
+      Перезагрузка системы...
+    </div>
+  </div>
+
+  <!-- Экран UEFI -->
+  <div class="action-screen" id="uefiScreen">
+    <div class="loader-large"></div>
+    <div class="action-content">
+      Вход в UEFI...
+    </div>
+  </div>
+
+  <script>
+    // Конфигурация этапов
+    const stages = [
+      { name: "Этап 1: Подготовка системы", duration: 10 },
+      { name: "Этап 2: Проверка микрокода", duration: 15 },
+      { name: "Этап 3: Обновление контроллера", duration: 20 },
+      { name: "Этап 4: Применение изменений", duration: 12 },
+      { name: "Этап 5: Финальная проверка", duration: 8 }
+    ];
+
+    // Основные переменные
+    let currentStage = 0;
+    let stageProgress = 0;
+    let globalProgress = 0;
+    let totalDuration = stages.reduce((sum, stage) => sum + stage.duration, 0);
+    let remainingSeconds = totalDuration;
+    let actionDialogOpen = false;
+    let selectedAction = 0;
+
+    // Форматирование времени
+    function formatTime(seconds) {
+      const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
+      const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+      const s = String(seconds % 60).padStart(2, '0');
+      return `${h}:${m}:${s}`;
+    }
+
+    // Обновление прогресса
+    function updateProgress() {
+      if (currentStage >= stages.length) return;
+      
+      // Увеличиваем прогресс текущего этапа
+      stageProgress++;
+      
+      // Рассчитываем прогресс в процентах для текущего этапа
+      const stagePercent = Math.min(Math.round((stageProgress / stages[currentStage].duration) * 100), 100);
+      
+      // Рассчитываем глобальный прогресс
+      globalProgress = Math.round(
+        (currentStage / stages.length * 100) + 
+        (stagePercent / stages.length)
+      );
+      
+      // Обновляем интерфейс
+      document.getElementById("progressBar").style.width = `${globalProgress}%`;
+      document.getElementById("stagePercent").textContent = `${stagePercent}%`;
+      document.getElementById("globalPercent").textContent = globalProgress;
+      document.getElementById("stageName").textContent = stages[currentStage].name;
+      
+      // Обновляем оставшееся время
+      remainingSeconds = Math.max(remainingSeconds - 1, 0);
+      document.getElementById("etaTime").textContent = formatTime(remainingSeconds);
+      
+      // Переход к следующему этапу
+      if (stageProgress >= stages[currentStage].duration) {
+        currentStage++;
+        stageProgress = 0;
+      }
+      
+      // Завершение процесса
+      if (globalProgress >= 100) {
+        setTimeout(() => {
+          document.getElementById("actionDialog").style.display = "flex";
+          document.getElementById("loadingWheel").style.display = "none";
+          actionDialogOpen = true;
+          updateActionSelection();
+        }, 1500);
+      }
+    }
+
+    // Обновление выбора в диалоге
+    function updateActionSelection() {
+      const rebootBtn = document.getElementById("rebootBtn");
+      const uefiBtn = document.getElementById("uefiBtn");
+      
+      rebootBtn.classList.toggle("selected", selectedAction === 0);
+      uefiBtn.classList.toggle("selected", selectedAction === 1);
+    }
+
+    // Выполнение действия
+    function performAction() {
+      document.getElementById("actionDialog").style.display = "none";
+      actionDialogOpen = false;
+      
+      if (selectedAction === 0) {
+        // Перезагрузка
+        document.getElementById("rebootScreen").style.display = "flex";
+        setTimeout(() => {
+          // Имитация перезагрузки
+          document.body.innerHTML = `
+            <div style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+              background: black;
+              color: white;
+              font-size: 36px;
+              text-align: center;
+              padding: 20px;
+              font-family: 'Wix Madefor Display', sans-serif;
+            ">
+              <div>
+                <div style="margin-bottom: 30px; font-size: 42px; font-weight: 700;">Edge+</div>
+                <div style="font-weight: 600;">Система успешно перезагружена</div>
+              </div>
+            </div>
+          `;
+        }, 3000);
+      } else {
+        // Вход в UEFI
+        document.getElementById("uefiScreen").style.display = "flex";
+        setTimeout(() => {
+          document.body.innerHTML = `
+            <div style="
+              background: #0a0a0a;
+              color: white;
+              height: 100vh;
+              padding: 40px;
+              font-family: 'Wix Madefor Display', sans-serif;
+            ">
+              <div style="
+                max-width: 800px;
+                margin: 0 auto;
+                border: 1px solid #444;
+                border-radius: 8px;
+                overflow: hidden;
+              ">
+                <div style="
+                  background: #333;
+                  padding: 15px;
+                  text-align: center;
+                  font-size: 24px;
+                  font-weight: 700;
+                ">
+                  UEFI SETUP UTILITY
+                </div>
+                
+                <div style="
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  gap: 2px;
+                  background: #222;
+                ">
+                  <div style="background: #1a1a1a; padding: 20px;">
+                    <h3 style="font-weight: 600;">Main</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-weight: 500;">
+                      <li>System Time: 12:30:45</li>
+                      <li>System Date: 2023-12-15</li>
+                      <li>BIOS Version: E1.20</li>
+                      <li>Product Name: Edge+ Server</li>
+                    </ul>
+                  </div>
+                  
+                  <div style="background: #1a1a1a; padding: 20px;">
+                    <h3 style="font-weight: 600;">Advanced</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-weight: 500;">
+                      <li>CPU Configuration</li>
+                      <li>SATA Configuration</li>
+                      <li>USB Configuration</li>
+                      <li>Network Configuration</li>
+                    </ul>
+                  </div>
+                  
+                  <div style="background: #1a1a1a; padding: 20px;">
+                    <h3 style="font-weight: 600;">Boot</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-weight: 500;">
+                      <li>Boot Option #1: Hard Drive</li>
+                      <li>Boot Option #2: USB</li>
+                      <li>Boot Option #3: Network</li>
+                      <li>Secure Boot: Enabled</li>
+                    </ul>
+                  </div>
+                  
+                  <div style="background: #1a1a1a; padding: 20px;">
+                    <h3 style="font-weight: 600;">Security</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-weight: 500;">
+                      <li>Administrator Password</li>
+                      <li>User Password</li>
+                      <li>Secure Boot Keys</li>
+                      <li>TPM Configuration</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div style="
+                  background: #1a1a1a;
+                  padding: 15px;
+                  text-align: center;
+                  color: #aaa;
+                  border-top: 1px solid #333;
+                  font-weight: 500;
+                ">
+                  [←→]: Select Screen  [↑↓]: Select Item  [Enter]: Select
+                </div>
+              </div>
+            </div>
+          `;
+        }, 3000);
+      }
+    }
+
+    // Обработка клавиатуры
+    document.addEventListener("keydown", (e) => {
+      if (!actionDialogOpen) return;
+      
+      if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+        e.preventDefault();
+        selectedAction = selectedAction === 0 ? 1 : 0;
+        updateActionSelection();
+      } else if (e.key === "Enter") {
+        performAction();
+      }
+    });
+
+    // Инициализация
+    window.onload = function() {
+      // Запуск процесса обновления
+      const progressInterval = setInterval(() => {
+        if (globalProgress < 100) {
+          updateProgress();
+        } else {
+          clearInterval(progressInterval);
+        }
+      }, 1000);
+      
+      // Инициализация диалога
+      document.getElementById("rebootBtn").addEventListener("click", () => {
+        selectedAction = 0;
+        performAction();
+      });
+      
+      document.getElementById("uefiBtn").addEventListener("click", () => {
+        selectedAction = 1;
+        performAction();
+      });
+    };
+  </script>
+</body>
+</html>

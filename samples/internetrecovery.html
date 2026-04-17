@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Edge+ Internet Recovery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Wix Madefor Display', sans-serif;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .corner-info {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      font-size: 13px;
+      line-height: 1.5;
+      text-align: left;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .globe {
+      width: 120px;
+      height: 120px;
+      margin: 20px auto;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/3/34/Globe-icon-animated.gif') no-repeat center/contain;
+    }
+
+    .input-section {
+      margin: 20px auto;
+      max-width: 300px;
+    }
+
+    select, input {
+      padding: 8px;
+      margin-top: 10px;
+      width: 100%;
+      background: #fff;
+      color: #000;
+      border: none;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 8px 16px;
+      font-weight: bold;
+      background: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .progress-container {
+      width: 300px;
+      margin-top: 30px;
+      display: none;
+    }
+
+    .progress-text {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .progress-bar {
+      background: white;
+      height: 4px;
+      width: 100%;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #00FFAA;
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+
+    .progress-percent {
+      margin-top: 6px;
+      font-size: 13px;
+    }
+
+    .warning {
+      margin-top: 20px;
+      font-size: 12px;
+      max-width: 500px;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="corner-info">
+    Edge System Internet Recovery 1.0<br>
+    Rivixal 2025<br>
+    Firmware 11.4.8
+  </div>
+
+  <h1>Edge+</h1>
+  <div class="globe"></div>
+
+  <div class="input-section">
+    <input type="password" id="wifi-password" placeholder="Введите пароль Wi-Fi">
+    <select id="wifi-networks">
+      <!-- Сети будут добавлены в JS -->
+    </select>
+    <button onclick="startRecovery()">Загрузить ПО</button>
+  </div>
+
+  <div class="progress-container" id="progress-container">
+    <div class="progress-text" id="progress-text">
+      Загрузка новой последней системы для устройства Edge+ Bookworld S2
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="progress-percent" id="progress-percent">0%</div>
+    <div class="warning">
+      Не отключайте его от сети! Иначе вы прервете процесс загрузки<br>
+      Если вы застряли на этапе загрузки, то отключите устройство от питания<br>
+      и включите его зажав эти кнопки edge+ + F + 4 + Tab
+    </div>
+  </div>
+
+  <script>
+    const networks = [
+      'Rivixal Home',
+      'WiFi_5G',
+      'Galaxy S23 Ultra',
+      'Redmi 9A',
+      'Edge+ Mobile Hotspot'
+    ];
+
+    const networkSelect = document.getElementById('wifi-networks');
+    networks.forEach(net => {
+      const option = document.createElement('option');
+      option.value = net;
+      option.textContent = net;
+      networkSelect.appendChild(option);
+    });
+
+    function startRecovery() {
+      document.querySelector('.input-section').style.display = 'none';
+
+      const progressContainer = document.getElementById('progress-container');
+      const fill = document.getElementById('progress-fill');
+      const percentText = document.getElementById('progress-percent');
+      const progressText = document.getElementById('progress-text');
+
+      progressContainer.style.display = 'block';
+
+      let percent = 0;
+
+      function slowLoad() {
+        let step = Math.random() * 0.7 + 0.5; // 0.5% – 1.2%
+        percent = Math.min(100, percent + step);
+
+        fill.style.width = percent + '%';
+        percentText.textContent = Math.floor(percent) + '%';
+
+        if (percent < 100) {
+          setTimeout(slowLoad, Math.random() * 500 + 700); // каждые 700–1200 мс
+        } else {
+          progressText.textContent = 'Система загружена. Перезагрузка...';
+        }
+      }
+
+      slowLoad();
+    }
+  </script>
+</body>
+</html>

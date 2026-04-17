@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карточки проектов</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .projects-container {
+            display: flex;
+            max-width: 850px;
+            width: 100%;
+            margin: 40px auto;
+            gap: 20px;
+            padding: 0 15px;
+        }
+        
+        .project-card {
+            flex: 1;
+            padding: 35px 30px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            min-height: 320px;
+            cursor: pointer;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .web-projects {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+        }
+        
+        .desktop-projects {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+        
+        .project-icon {
+            font-size: 52px;
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover .project-icon {
+            transform: scale(1.15); /* Убрано вращение, оставлено только масштабирование */
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .project-card h3 {
+            font-size: 24px;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        
+        .project-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            opacity: 0.9;
+            padding: 0 10px;
+        }
+        
+        .project-btn {
+            padding: 12px 30px;
+            background: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+        }
+        
+        .web-projects .project-btn {
+            color: #27ae60;
+        }
+        
+        .desktop-projects .project-btn {
+            color: #2980b9;
+        }
+        
+        .project-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 768px) {
+            .projects-container {
+                flex-direction: column;
+                gap: 25px;
+                margin: 30px auto;
+            }
+            
+            .project-card {
+                min-height: 280px;
+                border-radius: 14px;
+                padding: 30px 25px;
+            }
+            
+            .project-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 46px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="projects-container">
+        <div class="project-card web-projects">
+            <div class="project-icon">
+                <i class='bx bx-globe'></i>
+            </div>
+            <h3>Веб-проекты</h3>
+            <p>Посмотрите мои работы в веб-разработке - современные и адаптивные сайты, созданные с использованием передовых технологий</p>
+            <button class="project-btn">Смотреть проекты</button>
+        </div>
+        
+        <div class="project-card desktop-projects">
+            <div class="project-icon">
+                <i class='bx bx-desktop'></i>
+            </div>
+            <h3>Десктоп проекты</h3>
+            <p>Ознакомьтесь с приложениями для настольных компьютеров, которые я разрабатывал</p>
+            <button class="project-btn">Смотреть проекты</button>
+        </div>
+    </div>
+
+    <script>
+        // Добавляем обработчики событий для карточек и кнопок
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Проверяем, не была ли нажата сама кнопка
+                if (e.target.tagName !== 'BUTTON') {
+                    const cardType = this.classList.contains('web-projects') ? 
+                                    'веб-проекты' : 'десктоп проекты';
+                    alert(`Будет показана галерея: ${cardType}`);
+                    // Здесь можно добавить переход на другую страницу или открытие модального окна
+                }
+            });
+        });
+        
+        document.querySelectorAll('.project-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation(); // Предотвращаем срабатывание события на карточке
+                const cardType = this.closest('.project-card').classList.contains('web-projects') ? 
+                                'веб-проекты' : 'десктоп проекты';
+                alert(`Вы выбрали: ${cardType}`);
+                // Здесь можно добавить переход на другую страницу или открытие модального окна
+            });
+        });
+    </script>
+</body>
+</html>

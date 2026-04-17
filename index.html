@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rivixal</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/mattle_styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="styles/fonts.css">
+</head>
+<body>
+<header>
+  <div class="header-container">
+    <div class="logo">
+      <img src="system/images/logo.svg" alt="Rivixal">
+    </div>
+  <nav>
+    <ul>
+      <li><a href="index.html" class="active"><i class='bx bxs-home'></i> Главная</a></li>
+    </ul>
+  </nav>
+    </div>
+</header>
+
+  <div class="appstore-banner" style="--bg-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShCNNfcUSQnKi8oFxSshEjBkH593WMS-2sfQ&s');" data-nav-theme="dark">
+  <div class="banner-top">
+    <div class="banner-overlay"></div>
+    <div class="badge">Сегодня: <span id="date"></span></div>
+  </div>
+
+  <div class="banner-bottom">
+    <div>
+    <div class="special-event">
+        <strong>Случайный факт:</strong>
+        <div class="fact-text" id="random-fact">Загрузка факта...</div>
+    </div>
+      <h1 class="title">Добро пожаловать на сайт Edge+</h1>
+      <p class="subtitle">Здесь вы найдете все, что вам нужно, и то что вам не нужно тоже!</p>
+    </div>
+
+    <div class="app-info">
+    <!--<img src="https://i.imgur.com/SOfLe1M.png" alt="App Icon" class="app-icon">-->
+      <div class="app-text">
+        <div class="app-name">Rivixal Clock 2.1</div>
+        <div class="app-desc">Часы на вашем компьютере</div>
+      </div>
+      <button class="get-btn">Скоро</button>
+    </div>
+  </div>
+</div>
+
+  <main>
+    <div class="nocontainer" data-nav-theme="light">
+      <h1>Микропосты</h1>
+    </div>
+    <br>
+    <div class="container" onclick="document.location='#'">
+      <h1>Всем привет!</h1>
+      <p>Недавно я начал собирать коллекцию своих старых телефонов, которые были из детсвта, но и не только. Я буду также делиться играми и файлами которые пользуюсь на кнопочных телефонах и по сей день</p>
+    </div>
+  </main>
+<div class="bottom-nav-wrapper">
+  <div class="bottom-nav">
+    <ul class="mobile-nav">
+      <li><a href="index.html" class="active"><i class='bx bxs-home'></i><span>Главная</span></a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+ <script src="system/scripts/sunlight.js"></script>
+ <script src="system/scripts/flashing.js"></script>
+ <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+ <script src="system/scripts/mainbagde.js"></script>
+ <script src="system/scripts/getDateforBadge.js"></script>
+ <script src="system/scripts/getFactsforSpecialEvent.js"></script>
+</body>
+</html>
