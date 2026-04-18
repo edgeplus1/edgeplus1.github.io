@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rivixal</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/mattle_styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="styles/fonts.css">
+</head>
+<body>
+<header>
+  <div class="header-container">
+    <div class="logo">
+      <img src="system/images/logo.svg" alt="Rivixal">
+    </div>
+  <nav>
+    <ul>
+      <li><a href="index.html"><i class='bx bxs-home'></i> Главная</a></li>
+      <li><a href="collections.html" class="active"><i class='bx bxs-collection'></i> Коллекции</a></li>
+    </ul>
+  </nav>
+    </div>
+</header>
+  <main>
+    <br><br>
+    <h1 style="font-size: 60px;"><i class='bx bxs-collection'></i> Коллекции</h1>
+    <h4>Здесь буду публиковать свою коллекцию ретро телефонов :)</h4>
+
+    <div class="container stats-row">
+      <div class="blog-card" onclick="showDialog('dialog-nokia1280')">
+        <h3>Nokia 1280</h3>
+        <img src="collections/nokia1280.webp" alt="Nokia 1280" width="300px" height="300px">
+      </div>
+      <div class="blog-card" onclick="showDialog('dialog-nokia112')">
+        <h3>Nokia 112</h3>
+        <img src="collections/nokia112.webp" alt="Nokia 112" width="200px" height="300px">
+      </div>
+      <div class="blog-card" onclick="showDialog('dialog-nokia5230')">
+        <h3>Nokia 5230</h3>
+        <img src="collections/nokia5230.jpg" alt="Nokia 5230" width="300px" height="300px">
+      </div>
+      <div class="blog-card">
+        <h3>Скоро</h3>
+        <img src="collections/unkown.webp" alt="Nokia 5230" width="300px" height="300px">
+      </div>
+    </div>
+  </main>
+
+  <!---Диалоговые окна для характеристик и прочее--->
+
+      <div id="dialog-nokia1280" class="dialog">
+      <div class="dialog-content">
+        <span class="close" onclick="closeDialog('dialog-nokia1280')">&times;</span>
+        <h1>Nokia 1280</h1>
+        <br>
+        <hr noshade size="3" style="border-radius: 10px; color: #ffffff;">
+        <br>
+        <div class="container">
+          <img src="collections/nokia1280.webp" alt="Nokia 1280" width="300px" height="300px">
+          <h1>Характеристики Nokia 1280</h1>
+          <li>Экран: Монохромный, 1.36 дюйма, 96x68 пикселей.</li>
+          <li>Cеть: GSM 900/1800 (2G)</li>
+          <li>Аккумулятор: BL-5C 1020 mAh</li>
+          <li>Память: Телефонная книга на 500 записей.</li>
+          <li>Функции: FM-радио (требуются наушники), фонарик, встроенная громкая связь, будильник, игры, календарь</li>
+          <li>Разъемы: 3.5 мм для наушников, разъем для зарядки.</li>
+          <li>Корпус: Пластиковый, вес — 81.9 г</li>
+          <li>Платформа: Series 30</li>
+          <li>Состояние: Хорошее</li>
+          <li>Life Timer: 0512:40</li>
+          <br><br>
+          <h1>Маленькая история</h1>
+          <p>Nokia 1280 появилась у нашей бабушки, только не в черном цветве, а в лиловом. В нем я проходил Bounce, Snake Xenzia и Beach Rally, когда я ездил на электричке. Мне бабушка довольно часто давала поиграть, несмотря на то что у меня был до этого Nokia 112. Игры на монохромнике мне всегда казались интересными даже по сей день, а заряд при игре вообще не тратился от слова совсем, стабильно держал неделями. Ну и вот я на Авито решил её прикупить как память о прошлом, да и поиграть в эти же самые игрульки и послушать те самые рингтоны.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="dialog-nokia112" class="dialog">
+      <div class="dialog-content">
+        <span class="close" onclick="closeDialog('dialog-nokia112')">&times;</span>
+        <h1>Nokia 112</h1>
+        <br>
+        <hr noshade size="3" style="border-radius: 10px; color: #ffffff;">
+        <br>
+        <div class="container">
+        <img src="collections/nokia112.webp" alt="Nokia 112" width="200px" height="300px">
+          <h1>Характеристики Nokia 112</h1>
+          <li>Экран: 1.8 дюйма, TFT, 128x160 пикселей, 65 тыс. цветов.</li>
+          <li>Камера: 0.3 Мп (VGA), разрешение фото 640x480, видео 176x144</li>
+          <li>Cеть: GSM 900/1800 (2G)</li>
+          <li>Аккумулятор: BL-6C 1400 mAh</li>
+          <li>Память: 64 МБ встроенной, слот для карты памяти MicroSD</li>
+          <li>Мультимедиа: FM-радио (с возможностью записи), MP3-плеер, 3.5 мм разъем для гарнитуры.</li>
+          <li>Интерфейсы: Bluetooth 2.1 EDR, 2.0 мм разъем для зарядки.</li>
+          <li>Размеры и вес: 110.4 x 47 x 15.4 мм, вес 85.5 г</li>
+          <li>Платформа: Series 40</li>
+          <li>Состояние: Cреднее</li>
+          <li>Life Timer: 0824:55</li>
+          <br><br>
+          <h1>Маленькая история</h1>
+          <p>Моя первая Nokia которая появилась в 2012-13ом году, когда только-только я пошел с ним в первый класс, играл раньше там в разные игрульки которые передавали по блютузу, музыку на нем слушал, да и темы друг-другу передавали, я никогда не забуду ту тему которая стояла на телефоне у нас с братом (я её выклянчил), ну и потом в 3-4 классе перешел уже на Samsung Galaxy Star 2</p>
+          </div>
+      </div>
+    </div>
+
+    <div id="dialog-nokia5230" class="dialog">
+      <div class="dialog-content">
+        <span class="close" onclick="closeDialog('dialog-nokia5230')">&times;</span>
+        <h1>Nokia 5230</h1>
+        <br>
+        <hr noshade size="3" style="border-radius: 10px; color: #ffffff;">
+        <br>
+        <div class="container">
+        <img src="collections/nokia5230.jpg" alt="Nokia 5230" width="300px" height="300px">
+          <h1>Характеристики Nokia 5230</h1>
+          <li>Дисплей: 3.2 дюйма, TFT, резистивный сенсорный, 640x360 пикселей, 16 млн цветов.</li>
+          <li>Операционная система: Symbian OS 9.4, Series 60 rel. 5.</li>
+          <li>Процессор: ARM 11 с частотой 434 МГц.</li>
+          <li>Память: 70 МБ встроенной, 128 МБ оперативной (RAM), поддержка карт памяти microSDHC до 16 ГБ.</li>
+          <li>2 Мп (без автофокуса и вспышки)</li>
+          <li>ккумулятор: BL-5J, Li-Ion, 1320 мА·ч. Время работы: до 7 часов в режиме разговора (3G), до 33 часов музыки.</li>
+          <li>Связь и коммуникации: 3G (HSDPA), GSM/EDGE, Bluetooth 2.0 (A2DP), MicroUSB 2.0, 3.5 мм аудиоразъем, GPS (с A-GPS).</li>
+          <li>Размеры и вес: 1111 x 51.7 x 15.5 мм, вес 115 г</li>
+          <li>Состояние: Отличное</li>
+          <li>Life Timer: 0421:49</li>
+          <br><br>
+          <h1>Маленькая история</h1>
+          <p>Когда у папы был Nokia 5800, я хотел такой-же но только аналог подешевле, частенько видел его в газетах и именно его я хотел попросить у папы. Но мне так его не купили когда я был во втором классе, но спустя время, я все же осуществил свое желание хоть и слишком поздно :)</p>
+          </div>
+      </div>
+    </div>
+
+<div class="bottom-nav-wrapper">
+  <div class="bottom-nav">
+    <ul class="mobile-nav">
+      <li><a href="index.html"><i class='bx bxs-home'></i><span>Главная</span></a></li>
+      <li><a href="collections.html" class="active"><i class='bx bxs-collection'></i>Коллекции</a></li>
+    </ul>
+  </div>
+</div>
+
+
+ <script src="system/scripts/dialog.js"></script>
+ <script src="system/scripts/sunlight.js"></script>
+ <script src="system/scripts/flashing.js"></script>
+ <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+ <script src="system/scripts/mainbagde.js"></script>
+ <script src="system/scripts/getDateforBadge.js"></script>
+ <script src="system/scripts/getFactsforSpecialEvent.js"></script>
+</body>
+</html>
