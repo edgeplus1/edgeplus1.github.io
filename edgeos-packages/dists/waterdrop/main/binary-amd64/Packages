@@ -1,0 +1,14 @@
+Package: edgeos-plymouth-theme
+Version: 1.0
+Architecture: amd64
+Maintainer: EdgeOS Developer <ramzayev002@gmail.com>
+Depends: plymouth
+Priority: optional
+Section: misc
+Filename: pool/main/e/edgeos-plymouth-theme/edgeos-plymouth-theme_1.0_amd64.deb
+Size: 66832
+SHA256: 896a346bdbe42884c57e53b9413a4cc78ba36ffe3ff2137622186159d62be3d7
+SHA1: aa2933b52cb5ba113e53ddd3172e7de0afd8d13c
+MD5sum: e1b28d42e9fe7d5f8a1aed2c01aaa4be
+Description: Official Waterdrop Plymouth boot splash theme for EdgeOS.
+

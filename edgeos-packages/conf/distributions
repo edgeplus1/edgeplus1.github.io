@@ -1,0 +1,8 @@
+Origin: EdgeOS
+Label: EdgeOS Official Repository
+Codename: waterdrop
+Suite: stable
+Architectures: amd64
+Components: main
+Description: APT Repository for EdgeOS 1.0 Waterdrop
+SignWith: 90BE87856F08A9FE49B70B7FACD863AE9C09B8AC
