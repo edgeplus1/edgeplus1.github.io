@@ -1,6 +1,0 @@
-Archive: stable
-Component: main
-Origin: EdgeOS
-Label: EdgeOS Official Repository
-Architecture: amd64
-Description: APT Repository for EdgeOS 1.0 Waterdrop
