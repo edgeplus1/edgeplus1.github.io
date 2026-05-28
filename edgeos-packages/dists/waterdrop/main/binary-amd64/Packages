@@ -1,3 +1,18 @@
+Package: edge-desktop
+Version: 1.0
+Architecture: amd64
+Depends: lxqt-core, lxqt-session, lxqt-panel, pcmanfm-qt, qterminal, featherpad, falkon, calamares, pulseaudio, pavucontrol, alsa-utils, papirus-icon-theme, adwaita-icon-theme, oxygen-icon-theme, gparted, fastfetch, htop, mc, mpv, qimgv, screengrab, xarchiver, qpdfview, accountsservice
+Maintainer: EdgeOS Team <https://github.io>
+Priority: optional
+Section: metapackages
+Filename: pool/main/e/edge-desktop/edge-desktop_1.0_amd64.deb
+Size: 93080378
+SHA256: 261106a0fb861692c8cfa26a152250dced17af9d60e283d9d78df2ca6bc8ad61
+SHA1: efbdb041e681056b1cc15136a10dbd86a859d026
+MD5sum: dc760cbff8176988f8666a159ceb7038
+Description: Customized LXQt desktop environment for EdgeOS 1.0 Waterdrop.
+ Includes preconfigured panels, dark theme, wallpapers, and default app layouts.
+
 Package: edgeos-plymouth-theme
 Version: 1.0
 Architecture: amd64
@@ -11,4 +26,19 @@ SHA256: 896a346bdbe42884c57e53b9413a4cc78ba36ffe3ff2137622186159d62be3d7
 SHA1: aa2933b52cb5ba113e53ddd3172e7de0afd8d13c
 MD5sum: e1b28d42e9fe7d5f8a1aed2c01aaa4be
 Description: Official Waterdrop Plymouth boot splash theme for EdgeOS.
+
+Package: edgeos-sound-theme
+Version: 1.0
+Architecture: all
+Depends: pulseaudio-utils
+Maintainer: EdgeOS Software <https://edgeplus1.github.io>
+Priority: optional
+Section: sound
+Filename: pool/main/e/edgeos-sound-theme/edgeos-sound-theme_1.0_all.deb
+Size: 2061348
+SHA256: 709f58895cfd3d9500764a43778efb29501e80a44a92c6d2349f664438a1b45d
+SHA1: 81dd428dac29e338864142320fd34399cc070de5
+MD5sum: f0400f4dd2598f32645adc04733461f4
+Description: Official sound theme for EdgeOS 1.0 Waterdrop.
+ Provides login welcome sounds and system event audio effects.
 
