@@ -2,19 +2,19 @@ Origin: EdgeOS
 Label: EdgeOS Official Repository
 Suite: stable
 Codename: waterdrop
-Date: Thu, 28 May 2026 09:46:21 UTC
+Date: Thu, 28 May 2026 10:32:35 UTC
 Architectures: amd64
 Components: main
 Description: APT Repository for EdgeOS 1.0 Waterdrop
 MD5Sum:
- e9d8d8184ebab7bf45baccfbf690009a 1863 main/binary-amd64/Packages
- a6374586eb514c92970962c189742fb0 965 main/binary-amd64/Packages.gz
+ 66d2d3636d075eefe48fc2bb55d6694b 2554 main/binary-amd64/Packages
+ 0e2bed5ac86dd1c304f61fded743405c 1278 main/binary-amd64/Packages.gz
  0efd193d743c0103077bb180a68c3e06 154 main/binary-amd64/Release
 SHA1:
- bb42d54cdf57b4760f185e4fe32836a796839bb3 1863 main/binary-amd64/Packages
- f4a8e926e2b8b37094b53c044b552f941ea94fd0 965 main/binary-amd64/Packages.gz
+ af1b88f9c7323b14dcd818d19d4501f12841b515 2554 main/binary-amd64/Packages
+ 7e935f125d5513113eac285b10f8908ab1150a4f 1278 main/binary-amd64/Packages.gz
  58411a974a5393fe4f1610c007c01dc29ef3f46a 154 main/binary-amd64/Release
 SHA256:
- be744b9fd8d25987d55a0a4495fc467dbf6157df598738a3010608cd028b98be 1863 main/binary-amd64/Packages
- 9bdc5b8b7eb44c711c97561cfe11b6fcac9f2b4a05c0c4bc73121a6696ab7e95 965 main/binary-amd64/Packages.gz
+ eab4a0535326da5c7cc870a2ad44d6260d3f7e861bcc021d43519bb0bfbaa103 2554 main/binary-amd64/Packages
+ 7ff09eda3d2191ada72b9053f18ade1b4432d145570a370d208cf466fccd5230 1278 main/binary-amd64/Packages.gz
  6c3c23c69b9751f02b1f410410c350ab7abb15b3a806f34a77addcb567d6edfa 154 main/binary-amd64/Release

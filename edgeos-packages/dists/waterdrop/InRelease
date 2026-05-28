@@ -5,35 +5,35 @@ Origin: EdgeOS
 Label: EdgeOS Official Repository
 Suite: stable
 Codename: waterdrop
-Date: Thu, 28 May 2026 09:46:21 UTC
+Date: Thu, 28 May 2026 10:32:35 UTC
 Architectures: amd64
 Components: main
 Description: APT Repository for EdgeOS 1.0 Waterdrop
 MD5Sum:
- e9d8d8184ebab7bf45baccfbf690009a 1863 main/binary-amd64/Packages
- a6374586eb514c92970962c189742fb0 965 main/binary-amd64/Packages.gz
+ 66d2d3636d075eefe48fc2bb55d6694b 2554 main/binary-amd64/Packages
+ 0e2bed5ac86dd1c304f61fded743405c 1278 main/binary-amd64/Packages.gz
  0efd193d743c0103077bb180a68c3e06 154 main/binary-amd64/Release
 SHA1:
- bb42d54cdf57b4760f185e4fe32836a796839bb3 1863 main/binary-amd64/Packages
- f4a8e926e2b8b37094b53c044b552f941ea94fd0 965 main/binary-amd64/Packages.gz
+ af1b88f9c7323b14dcd818d19d4501f12841b515 2554 main/binary-amd64/Packages
+ 7e935f125d5513113eac285b10f8908ab1150a4f 1278 main/binary-amd64/Packages.gz
  58411a974a5393fe4f1610c007c01dc29ef3f46a 154 main/binary-amd64/Release
 SHA256:
- be744b9fd8d25987d55a0a4495fc467dbf6157df598738a3010608cd028b98be 1863 main/binary-amd64/Packages
- 9bdc5b8b7eb44c711c97561cfe11b6fcac9f2b4a05c0c4bc73121a6696ab7e95 965 main/binary-amd64/Packages.gz
+ eab4a0535326da5c7cc870a2ad44d6260d3f7e861bcc021d43519bb0bfbaa103 2554 main/binary-amd64/Packages
+ 7ff09eda3d2191ada72b9053f18ade1b4432d145570a370d208cf466fccd5230 1278 main/binary-amd64/Packages.gz
  6c3c23c69b9751f02b1f410410c350ab7abb15b3a806f34a77addcb567d6edfa 154 main/binary-amd64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEEkL6HhW8Iqf5Jtwt/rNhjrpwJuKwFAmoYDu0ACgkQrNhjrpwJ
-uKz0LBAAtV76MNceZbFv2xzo9Or3JqWGSgt+93+BkoEy9KgR3CfOWd1ItykCM6Vk
-0PhlimniVoVcX+u08X/lgdfI7tO/b22Zr5Lo7UWI7PQfCoA9hJcFXw+ajzeGcQjo
-OPNuFJyLbsY680I9QJ1w97517EiVQqQMZ+tTb4TYJNToqvCbCEkS+O/qVDFPRNJk
-qP2Z70pfvZNakqnMEstHnCOq9nZ7RTpqILAqiLx9a1IzidH/8O1KCQpG40rlKIky
-IQWfOMjMIhDuzsklbi2FwvS5FLJXEEzOZBaZ724SGvRCus7kMCogHU2aXYH5IGmI
-rzCXt31ZdT/SjAMvyZM4SxHe7Dspr0AN9SeuKhC9AO0Oz9B2vMVwIYVyKJOPjHVe
-0wQtdCKMMNO2OT2p6+KgRs9V+qRU1dQfChhwnbIIUP6rJXhyZLWKKclUlbgYx49W
-FZXf7nWz5eOhvMhcXrk0slsuiT3luMxIruUHlTYiZyNZnIy0lAD5nLPezW16RDtl
-/zCTwYiSVpojRtL3Mzf8GvVzIjq757xw/61nv3fYOd0mg9n5If4FPFbJsTMh52rB
-Fn+76ITKCubveJmrSB2TqJSup88RfG1O29+xx7gMBIFXjlvRAJGG0N8kDhfggNOl
-3bI2aIh4I+/904hUQ6VwUd+0fG9YhcIojhvCQOMPUNiJVL6Obbw=
-=9Lag
+iQIzBAEBCgAdFiEEkL6HhW8Iqf5Jtwt/rNhjrpwJuKwFAmoYGcMACgkQrNhjrpwJ
+uKxKEg//Ygo6kDa5HOHtKJmxRFY7QQcIDJxt4JrUJpTxoGjNCNsKSrzpB+OqOUOo
+ZYQ5ibwC62Qz6TwC3KQnQn8bp+vl81unfDSlqaJHfQzbfkeQHEZfZ+u7mk2WAd6i
+64mlA5QBFcgrncLw4wdsG7/ZwNmULvTCBnE5gw6oso40V21Wu8oDJVWf0zOsDv3o
+4eW3/sioaj9/WkqIGBzyHzKTGMhrZ1DkqIqp+9VKBOtaHsMEdtIX16vNxo+uBSLN
+KxqHbFLWE4nP7ABpaTsg1pXzHHfVjTA9AFgnnwq0WjKxUHsO5jSXXZ7IYUdvvL0i
+QiAqiLz66I5iWd3suOPJBgXuttEFezyBaYKS5KSZ6aXY9i2DW1exga2k5ukiHZZ7
+r4jjIAuFp2S/aNZtz5E8hKEXREobDsSEhLaoJ7kxec8eQlYy+VySwImqc6VhgmY9
+vZvLI7cLRq56BDBI9QZ7hlfV1E6CgUu2PPB/v8ZJSboEhzZF6ocJDGNJil7UG8Le
+Te2CMjcbjxgtKn1/QpLsQe7q3MLWoJNN158O4YT91ndM30txP1c1hpC8Ge1VuEnR
+kQCuoKUUMvAUpFT09m2ACZ7R0i5w8e1DlGyUhOg1UwOhzjEFX+sDWym5zCQoY/eN
+m2G0crXyeLjG33+amiWoysx5x9YE9+GUZE6yjhBLnNTIoxHHvCQ=
+=6FZ/
 -----END PGP SIGNATURE-----
